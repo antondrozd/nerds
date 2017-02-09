@@ -185,26 +185,49 @@ img {
 	opacity: 0.4;
 }
 
+.slider {
+	position: relative;
+}
+
+
+.slider-inner {
+	overflow: hidden;
+}
+
+.slider > input[type="radio"] {
+	display: none;
+}
+
+.slider .controls {
+	position: absolute;
+	left: 50%;
+	bottom: 95px;
+	z-index: 5;
+}
+
+.slider .controls label {
+	position: relative;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin-right: 10px;
+	background-color: #ffffff;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.slider-slides {
+	width: 300%;
+	transition: transform 0.8s ease;
+}
+
 [class^="slide-"] {
+	float: left;
+	width: 900px;
 	padding-top: 19px;
 	padding-bottom: 80px;
 	background-repeat: no-repeat;
 	background-position: right 0;
-}
-
-.slide-1 {
-	display: none;
-	background-image: url("../img/slide-1.png");
-}
-
-.slide-2 {
-	display: none;
-	background-image: url("../img/slide-2.png");
-}
-
-.slide-3 {
-	display: none;
-	background-image: url("../img/slide-3.png");
 }
 
 [class^="slide-"] b {
@@ -226,29 +249,16 @@ img {
 	width: 240px;
 }
 
-.slider {
-	position: relative;
+.slide-1 {
+	background-image: url("../img/slide-1.png");
 }
 
-.slider > input[type="radio"] {
-	display: none;
+.slide-2 {
+	background-image: url("../img/slide-2.png");
 }
 
-.slider .controls {
-	position: absolute;
-	left: 50%;
-	bottom: 95px;
-}
-
-.slider .controls label {
-	position: relative;
-	display: inline-block;
-	width: 10px;
-	height: 10px;
-	margin-right: 10px;
-	background-color: #ffffff;
-	border-radius: 50%;
-	cursor: pointer;
+.slide-3 {
+	background-image: url("../img/slide-3.png");
 }
 
 #slide1:checked ~ .controls label[for="slide1"]::after,
@@ -266,10 +276,16 @@ img {
 	border-radius: 50%;
 }
 
-#slide1:checked ~ .slide-1,
-#slide2:checked ~ .slide-2,
-#slide3:checked ~ .slide-3 {
-	display: block;
+#slide1:checked ~ .slider-inner .slider-slides {
+	transform: translate(0);
+}
+
+#slide2:checked ~ .slider-inner .slider-slides {
+	transform: translate(-900px);
+}
+
+#slide3:checked ~ .slider-inner .slider-slides {
+	transform: translate(-1800px);	
 }
 
 .order-items {
